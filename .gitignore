@@ -1,0 +1,8 @@
+.venv/
+.ipynb_checkpoints/
+__pycache__/
+.DS_Store
+.cache/
+# Generated artifacts are reviewed before being committed or released.
+models/**/environment.json
+models/**/*-environment.json

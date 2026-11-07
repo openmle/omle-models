@@ -1,0 +1,4 @@
+# Validated with PySpark 3.5.9 and 4.3.0, using Java 17.
+# PySpark 4.3 requires Python 3.11+.
+-r requirements.txt
+pyspark>=3.5,<5
