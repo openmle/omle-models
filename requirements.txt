@@ -1,8 +1,7 @@
 # Python 3.10+; notebooks print and save exact versions used.
 jupyterlab
 numpy
-# OMLE mixed-column inference requires writable arrays from pandas 2.x.
-pandas>=2.2,<3
+pandas>=2.2
 scikit-learn>=1.6
 omle
 omle-convert

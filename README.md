@@ -21,8 +21,7 @@ where the requirements were installed. No installation of this repository is nee
 The embedded OMLE viewer is interactive in a running notebook; GitHub previews
 do not execute its JavaScript.
 
-The shared requirements constrain pandas to 2.x for compatibility with OMLE
-mixed-column inference. Restart the kernel after changing dependencies.
+Restart the kernel after changing dependencies.
 
 ## Additional framework dependencies
 
@@ -40,8 +39,8 @@ python -m pip install -r requirements-spark.txt
 The Spark notebooks use Java 17 with `JAVA_HOME` configured and a local Spark
 session; each aligns Python workers with the kernel interpreter and stops Spark
 at the end. See the [PySpark installation guide](https://spark.apache.org/docs/latest/api/python/getting_started/install.html).
-All four Spark notebooks have passed end-to-end checks with **PySpark 3.5.9 and
-4.3.0**, Python 3.11, and Java 17. Checks include export, structural validation,
+The Spark DataFrame workflows are validated with **PySpark 4.3.0**, Python 3.11,
+and Java 17. Checks include export, structural validation,
 viewer generation, native/OMLE prediction parity, and missing/unseen-category
 probes for the mixed-type recipes. PySpark 4.3 requires Python 3.11 or newer.
 Notebook outputs are cleared for Git; run the cells to generate results locally.
@@ -53,23 +52,23 @@ On macOS, LightGBM needs the OpenMP runtime (`brew install libomp`); see the
 
 ## Examples
 
-| Task | Dataset | Framework | Model | Notebook |
-| --- | --- | --- | --- | --- |
-| Binary classification | Breast Cancer Wisconsin | scikit-learn | StandardScaler + LogisticRegression | [Open notebook](notebooks/classification/breast-cancer/sklearn-logistic-regression.ipynb) |
-| Binary classification | Breast Cancer Wisconsin | XGBoost | XGBClassifier | [Open notebook](notebooks/classification/breast-cancer/xgboost-classifier.ipynb) |
-| Binary classification | Breast Cancer Wisconsin | LightGBM | LGBMClassifier | [Open notebook](notebooks/classification/breast-cancer/lightgbm-classifier.ipynb) |
-| Binary classification | Breast Cancer Wisconsin | Spark ML | StandardScaler + LogisticRegression | [Open notebook](notebooks/classification/breast-cancer/spark-logistic-regression.ipynb) |
-| Multiclass classification | Iris | scikit-learn | RandomForestClassifier | [Open notebook](notebooks/classification/iris/sklearn-random-forest.ipynb) |
-| Multiclass classification | Wine | scikit-learn | StandardScaler + LogisticRegression | [Open notebook](notebooks/classification/wine/sklearn-logistic-regression.ipynb) |
-| Regression | Diabetes | scikit-learn | StandardScaler + Ridge | [Open notebook](notebooks/regression/diabetes/sklearn-ridge.ipynb) |
-| Regression | Diabetes | scikit-learn | RandomForestRegressor | [Open notebook](notebooks/regression/diabetes/sklearn-random-forest.ipynb) |
-| Clustering | Synthetic blobs | scikit-learn | StandardScaler + KMeans | [Open notebook](notebooks/clustering/blobs/sklearn-kmeans.ipynb) |
-| Binary classification (mixed types) | Titanic | scikit-learn | ColumnTransformer + LogisticRegression | [Open notebook](notebooks/classification/titanic/sklearn-mixed-logistic-regression.ipynb) |
-| Binary classification (mixed types) | Adult Census Income | scikit-learn | ColumnTransformer + LogisticRegression | [Open notebook](notebooks/classification/adult/sklearn-mixed-logistic-regression.ipynb) |
-| Regression (mixed types) | Ames Housing | scikit-learn | ColumnTransformer + Ridge | [Open notebook](notebooks/regression/ames-housing/sklearn-mixed-ridge.ipynb) |
-| Binary classification (mixed types) | Titanic | Spark ML | Imputer + StringIndexer + OneHotEncoder + LogisticRegression | [Open notebook](notebooks/classification/titanic/spark-mixed-logistic-regression.ipynb) |
-| Binary classification (mixed types) | Adult Census Income | Spark ML | Imputer + StringIndexer + OneHotEncoder + RandomForestClassifier | [Open notebook](notebooks/classification/adult/spark-mixed-random-forest.ipynb) |
-| Regression (mixed types) | Ames Housing | Spark ML | Imputer + StringIndexer + OneHotEncoder + LinearRegression | [Open notebook](notebooks/regression/ames-housing/spark-mixed-linear-regression.ipynb) |
+| Task | Dataset | Framework | Model | Notebook | Viewer |
+| --- | --- | --- | --- | --- | --- |
+| Binary classification | Breast Cancer Wisconsin | scikit-learn | StandardScaler + LogisticRegression | [Open notebook](notebooks/classification/breast-cancer/sklearn-logistic-regression.ipynb) | [View model](https://openmle.github.io/playground/viewer.html?model=https%3A%2F%2Fgithub.com%2Fopenmle%2Fomle-models%2Fraw%2Frefs%2Fheads%2Fmain%2Fmodels%2Fclassification%2Fbreast-cancer%2Fsklearn-logistic-regression.omle) |
+| Binary classification | Breast Cancer Wisconsin | XGBoost | XGBClassifier | [Open notebook](notebooks/classification/breast-cancer/xgboost-classifier.ipynb) | [View model](https://openmle.github.io/playground/viewer.html?model=https%3A%2F%2Fgithub.com%2Fopenmle%2Fomle-models%2Fraw%2Frefs%2Fheads%2Fmain%2Fmodels%2Fclassification%2Fbreast-cancer%2Fxgboost-classifier.omle) |
+| Binary classification | Breast Cancer Wisconsin | LightGBM | LGBMClassifier | [Open notebook](notebooks/classification/breast-cancer/lightgbm-classifier.ipynb) | [View model](https://openmle.github.io/playground/viewer.html?model=https%3A%2F%2Fgithub.com%2Fopenmle%2Fomle-models%2Fraw%2Frefs%2Fheads%2Fmain%2Fmodels%2Fclassification%2Fbreast-cancer%2Flightgbm-classifier.omle) |
+| Binary classification | Breast Cancer Wisconsin | Spark ML | VectorAssembler + StandardScaler + LogisticRegression | [Open notebook](notebooks/classification/breast-cancer/spark-logistic-regression.ipynb) | [View model](https://openmle.github.io/playground/viewer.html?model=https%3A%2F%2Fgithub.com%2Fopenmle%2Fomle-models%2Fraw%2Frefs%2Fheads%2Fmain%2Fmodels%2Fclassification%2Fbreast-cancer%2Fspark-logistic-regression.omle) |
+| Multiclass classification | Iris | scikit-learn | RandomForestClassifier | [Open notebook](notebooks/classification/iris/sklearn-random-forest.ipynb) | [View model](https://openmle.github.io/playground/viewer.html?model=https%3A%2F%2Fgithub.com%2Fopenmle%2Fomle-models%2Fraw%2Frefs%2Fheads%2Fmain%2Fmodels%2Fclassification%2Firis%2Fsklearn-random-forest.omle) |
+| Multiclass classification | Wine | scikit-learn | StandardScaler + LogisticRegression | [Open notebook](notebooks/classification/wine/sklearn-logistic-regression.ipynb) | [View model](https://openmle.github.io/playground/viewer.html?model=https%3A%2F%2Fgithub.com%2Fopenmle%2Fomle-models%2Fraw%2Frefs%2Fheads%2Fmain%2Fmodels%2Fclassification%2Fwine%2Fsklearn-logistic-regression.omle) |
+| Regression | Diabetes | scikit-learn | StandardScaler + Ridge | [Open notebook](notebooks/regression/diabetes/sklearn-ridge.ipynb) | [View model](https://openmle.github.io/playground/viewer.html?model=https%3A%2F%2Fgithub.com%2Fopenmle%2Fomle-models%2Fraw%2Frefs%2Fheads%2Fmain%2Fmodels%2Fregression%2Fdiabetes%2Fsklearn-ridge.omle) |
+| Regression | Diabetes | scikit-learn | RandomForestRegressor | [Open notebook](notebooks/regression/diabetes/sklearn-random-forest.ipynb) | [View model](https://openmle.github.io/playground/viewer.html?model=https%3A%2F%2Fgithub.com%2Fopenmle%2Fomle-models%2Fraw%2Frefs%2Fheads%2Fmain%2Fmodels%2Fregression%2Fdiabetes%2Fsklearn-random-forest.omle) |
+| Clustering | Synthetic blobs | scikit-learn | StandardScaler + KMeans | [Open notebook](notebooks/clustering/blobs/sklearn-kmeans.ipynb) | [View model](https://openmle.github.io/playground/viewer.html?model=https%3A%2F%2Fgithub.com%2Fopenmle%2Fomle-models%2Fraw%2Frefs%2Fheads%2Fmain%2Fmodels%2Fclustering%2Fblobs%2Fsklearn-kmeans.omle) |
+| Binary classification (mixed types) | Titanic | scikit-learn | ColumnTransformer + LogisticRegression | [Open notebook](notebooks/classification/titanic/sklearn-mixed-logistic-regression.ipynb) | [View model](https://openmle.github.io/playground/viewer.html?model=https%3A%2F%2Fgithub.com%2Fopenmle%2Fomle-models%2Fraw%2Frefs%2Fheads%2Fmain%2Fmodels%2Fclassification%2Ftitanic%2Fsklearn-mixed-logistic-regression.omle) |
+| Binary classification (mixed types) | Adult Census Income | scikit-learn | ColumnTransformer + LogisticRegression | [Open notebook](notebooks/classification/adult/sklearn-mixed-logistic-regression.ipynb) | [View model](https://openmle.github.io/playground/viewer.html?model=https%3A%2F%2Fgithub.com%2Fopenmle%2Fomle-models%2Fraw%2Frefs%2Fheads%2Fmain%2Fmodels%2Fclassification%2Fadult%2Fsklearn-mixed-logistic-regression.omle) |
+| Regression (mixed types) | Ames Housing | scikit-learn | ColumnTransformer + Ridge | [Open notebook](notebooks/regression/ames-housing/sklearn-mixed-ridge.ipynb) | [View model](https://openmle.github.io/playground/viewer.html?model=https%3A%2F%2Fgithub.com%2Fopenmle%2Fomle-models%2Fraw%2Frefs%2Fheads%2Fmain%2Fmodels%2Fregression%2Fames-housing%2Fsklearn-mixed-ridge.omle) |
+| Binary classification (mixed types) | Titanic | Spark ML | Imputer + StringIndexer + OneHotEncoder + LogisticRegression | [Open notebook](notebooks/classification/titanic/spark-mixed-logistic-regression.ipynb) | [View model](https://openmle.github.io/playground/viewer.html?model=https%3A%2F%2Fgithub.com%2Fopenmle%2Fomle-models%2Fraw%2Frefs%2Fheads%2Fmain%2Fmodels%2Fclassification%2Ftitanic%2Fspark-mixed-logistic-regression.omle) |
+| Binary classification (mixed types) | Adult Census Income | Spark ML | Imputer + StringIndexer + OneHotEncoder + RandomForestClassifier | [Open notebook](notebooks/classification/adult/spark-mixed-random-forest.ipynb) | [View model](https://openmle.github.io/playground/viewer.html?model=https%3A%2F%2Fgithub.com%2Fopenmle%2Fomle-models%2Fraw%2Frefs%2Fheads%2Fmain%2Fmodels%2Fclassification%2Fadult%2Fspark-mixed-random-forest.omle) |
+| Regression (mixed types) | Ames Housing | Spark ML | Imputer + StringIndexer + OneHotEncoder + LinearRegression | [Open notebook](notebooks/regression/ames-housing/spark-mixed-linear-regression.ipynb) | [View model](https://openmle.github.io/playground/viewer.html?model=https%3A%2F%2Fgithub.com%2Fopenmle%2Fomle-models%2Fraw%2Frefs%2Fheads%2Fmain%2Fmodels%2Fregression%2Fames-housing%2Fspark-mixed-linear-regression.omle) |
 
 ## Data and artifacts
 
@@ -78,11 +77,23 @@ copies are stored here. Each notebook documents attribution and licensing.
 External downloads should use stable versions and checksums, with caches excluded
 from Git.
 
-Titanic, Adult, and Ames Housing use pinned OpenML dataset IDs and download into
-`.cache/openml/`. The first run needs internet; later runs reuse the cache.
-Notebooks record source metadata, checksums, selected columns, and column types.
-Dataset-specific preprocessing and missing/unseen-category policies are explained
-in each notebook.
+The scikit-learn Titanic, Adult, and Ames Housing examples use pinned OpenML
+dataset IDs and cache downloads in `.cache/openml/`. Spark notebooks download
+the public source files into `.cache/spark/`, verify pinned SHA-256 checksums,
+and parse them with Spark's CSV reader using explicit schemas. The first run
+needs internet; later runs reuse the cache. Notebooks record source identity,
+checksums, selected columns, and column types. Dataset-specific preprocessing
+and missing/unseen-category policies are explained in each notebook.
+
+Spark notebooks use Spark DataFrames for input casting, deterministic hash-based
+splits, training, evaluation, and missing/unseen-category probes. OMLE scoring
+runs on executors through `omle-spark`, with its bundled JARs configured before
+session creation. Native and OMLE predictions are joined by unique row IDs and
+compared with Spark expressions; no pandas, NumPy, or scikit-learn code is used.
+Spark splits differ from the scikit-learn examples. The published Spark bridge's
+numeric-null behavior is handled by preserving missing inputs as IEEE NaN before
+OMLE scoring; learned imputation stays in the exported graph. These examples run
+locally; cluster deployments need source and model paths accessible to executors.
 
 Notebooks locate the repository root from the working directory and write to
 `models/<task>/<dataset>/`. New recipes use `<recipe>-environment.json` so their
